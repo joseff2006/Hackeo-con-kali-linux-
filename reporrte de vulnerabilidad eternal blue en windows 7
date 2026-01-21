@@ -1,0 +1,447 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-11 20:55 EST
+Nmap scan report for 10.0.0.1
+Host is up (0.0094s latency).
+MAC Address: 70:FD:45:9E:90:80 (Huawei Technologies)
+Nmap scan report for 10.0.0.7
+Host is up (0.038s latency).
+MAC Address: AC:6F:BB:5F:A0:AA (Tatung Technology)
+Nmap scan report for 10.0.0.28
+Host is up (0.10s latency).
+MAC Address: B4:FB:E3:23:20:98 (AltoBeam (China))
+Nmap scan report for 10.0.0.72
+Host is up (0.045s latency).
+MAC Address: 78:66:9D:AE:03:17 (Hui Zhou Gaoshengda Technology)
+Nmap scan report for 10.0.0.104
+Host is up (0.00070s latency).
+MAC Address: 1C:CE:51:E8:2F:17 (AzureWave Technology)
+Nmap scan report for 10.0.0.143
+Host is up (0.0092s latency).
+MAC Address: 98:90:96:C1:3B:E0 (Dell)
+Nmap scan report for 10.0.0.152
+Host is up (0.071s latency).
+MAC Address: 46:E8:48:6B:03:28 (Unknown)
+Nmap scan report for 10.0.0.159
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+┌──(ismael㉿ismael)-[~]
+└─$ nmap -sS  --open --min-rate 5000 -vvv -n -Pn -oG allPorts 10.0.0.160
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-11 22:08 EST
+Initiating ARP Ping Scan at 22:08
+Scanning 10.0.0.160 [1 port]
+Completed ARP Ping Scan at 22:08, 0.07s elapsed (1 total hosts)
+Initiating SYN Stealth Scan at 22:08
+Scanning 10.0.0.160 [1000 ports]
+Discovered open port 139/tcp on 10.0.0.160
+Discovered open port 445/tcp on 10.0.0.160
+Discovered open port 135/tcp on 10.0.0.160
+Discovered open port 554/tcp on 10.0.0.160
+Discovered open port 2869/tcp on 10.0.0.160
+Discovered open port 5357/tcp on 10.0.0.160
+Discovered open port 10243/tcp on 10.0.0.160
+Completed SYN Stealth Scan at 22:08, 0.54s elapsed (1000 total ports)
+Nmap scan report for 10.0.0.160
+Host is up, received arp-response (0.013s latency).
+Scanned at 2026-01-11 22:08:14 EST for 0s
+Not shown: 993 filtered tcp ports (no-response)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT      STATE SERVICE      REASON
+135/tcp   open  msrpc        syn-ack ttl 128
+139/tcp   open  netbios-ssn  syn-ack ttl 128
+445/tcp   open  microsoft-ds syn-ack ttl 128
+554/tcp   open  rtsp         syn-ack ttl 128
+2869/tcp  open  icslap       syn-ack ttl 128
+5357/tcp  open  wsdapi       syn-ack ttl 128
+10243/tcp open  unknown      syn-ack ttl 128
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Read data files from: /usr/share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 0.73 seconds
+           Raw packets sent: 1994 (87.720KB) | Rcvd: 8 (336B)
+
+                                                                             
+┌──(ismael㉿ismael)-[~]
+└─$ nmap -sCV -P 135,139,445,554,2869,5357,10243 -oN Targeted 10.0.0.160
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-12 18:02 EST
+Failed to resolve "135,139,445,554,2869,5357,10243".
+Nmap scan report for 10.0.0.160
+Host is up (0.010s latency).
+Not shown: 993 filtered tcp ports (no-response)
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Windows 7 Ultimate 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+554/tcp   open  rtsp?
+2869/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Service Unavailable
+10243/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: Host: ISMAEL-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+|_nbstat: NetBIOS name: ISMAEL-PC, NetBIOS user: <unknown>, NetBIOS MAC: 08:00:27:20:22:b0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+| smb-os-discovery: 
+|   OS: Windows 7 Ultimate 7601 Service Pack 1 (Windows 7 Ultimate 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: ismael-PC
+|   NetBIOS computer name: ISMAEL-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2026-01-12T19:04:13-08:00
+| smb2-time: 
+|   date: 2026-01-13T03:04:14
+|_  start_date: 2026-01-13T02:56:35
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_clock-skew: mean: 6h39m33s, deviation: 4h37m07s, median: 3h59m33s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 3817.72 seconds
+                                                                             
+┌──(ismael㉿ismael)-[~]
+└─$ nmap -sCV -P 135,139,445,554,2869,5357,10243 -oN Targeted 10.0.0.160
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-12 19:07 EST
+Failed to resolve "135,139,445,554,2869,5357,10243".
+Stats: 0:00:07 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 0.80% done
+Nmap scan report for 10.0.0.160
+Host is up (0.012s latency).
+Not shown: 993 filtered tcp ports (no-response)
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Windows 7 Ultimate 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+554/tcp   open  rtsp?
+2869/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Service Unavailable
+|_http-server-header: Microsoft-HTTPAPI/2.0
+10243/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: Host: ISMAEL-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 6h29m16s, deviation: 4h37m08s, median: 3h49m15s
+| smb2-time: 
+|   date: 2026-01-13T03:58:41
+|_  start_date: 2026-01-13T02:56:35
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 7 Ultimate 7601 Service Pack 1 (Windows 7 Ultimate 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: ismael-PC
+|   NetBIOS computer name: ISMAEL-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2026-01-12T19:58:42-08:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_nbstat: NetBIOS name: ISMAEL-PC, NetBIOS user: <unknown>, NetBIOS MAC: 08:00:27:20:22:b0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 194.74 seconds
+                                                                             
+┌──(ismael㉿ismael)-[~]
+└─$ nmap -p 135,139,445,554,2869,5357,10243 -sCV 10.0.0.160 -oN Taegeted 
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-12 19:21 EST
+Nmap scan report for 10.0.0.160
+Host is up (0.017s latency).
+
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Windows 7 Ultimate 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+554/tcp   open  rtsp?
+2869/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Service Unavailable
+|_http-server-header: Microsoft-HTTPAPI/2.0
+10243/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: Host: ISMAEL-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_nbstat: NetBIOS name: ISMAEL-PC, NetBIOS user: <unknown>, NetBIOS MAC: 08:00:27:20:22:b0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+|_clock-skew: mean: 6h29m13s, deviation: 4h37m07s, median: 3h49m13s
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2026-01-13T04:12:50
+|_  start_date: 2026-01-13T02:56:35
+| smb-os-discovery: 
+|   OS: Windows 7 Ultimate 7601 Service Pack 1 (Windows 7 Ultimate 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: ismael-PC
+|   NetBIOS computer name: ISMAEL-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2026-01-12T20:12:48-08:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 191.69 seconds
+
+
+                                                                             
+┌──(ismael㉿ismael)-[~]
+└─$ crackmapexec smb 10.0.0.160
+Command 'crackmapexec' not found, but can be installed with:
+sudo apt install crackmapexec
+Do you want to install it? (N/y)y
+sudo apt install crackmapexec
+[sudo] password for ismael: 
+Sorry, try again.
+[sudo] password for ismael: 
+Installing:                     
+  crackmapexec
+                                                                             
+Installing dependencies:
+  python3-aioconsole  python3-pywerview
+                                                                             
+Summary:
+  Upgrading: 0, Installing: 3, Removing: 0, Not Upgrading: 1541
+  Download size: 713 kB
+  Space needed: 2,835 kB / 50.8 GB available
+
+Continue? [Y/n] y
+Get:1 http://us.mirror.ionos.com/linux/distributions/kali/kali kali-rolling/main amd64 python3-pywerview all 0.3.3-0kali1 [32.2 kB]
+Get:2 http://kali.download/kali kali-rolling/main amd64 python3-aioconsole all 0.8.2-1 [34.7 kB]
+Get:3 http://kali.download/kali kali-rolling/main amd64 crackmapexec all 5.4.0-0kali6 [646 kB]
+Fetched 713 kB in 1s (723 kB/s)   
+Selecting previously unselected package python3-pywerview.
+(Reading database ... 416653 files and directories currently installed.)
+Preparing to unpack .../python3-pywerview_0.3.3-0kali1_all.deb ...
+Unpacking python3-pywerview (0.3.3-0kali1) ...
+Selecting previously unselected package python3-aioconsole.
+Preparing to unpack .../python3-aioconsole_0.8.2-1_all.deb ...
+Unpacking python3-aioconsole (0.8.2-1) ...
+Selecting previously unselected package crackmapexec.
+Preparing to unpack .../crackmapexec_5.4.0-0kali6_all.deb ...
+Unpacking crackmapexec (5.4.0-0kali6) ...
+Setting up python3-pywerview (0.3.3-0kali1) ...
+Setting up python3-aioconsole (0.8.2-1) ...
+Setting up crackmapexec (5.4.0-0kali6) ...
+/usr/lib/python3/dist-packages/cme/cli.py:37: SyntaxWarning: invalid escape sequence '\ '
+  formatter_class=RawTextHelpFormatter)
+/usr/lib/python3/dist-packages/cme/cmedb.py:141: SyntaxWarning: invalid escape sequence '\{'
+  entry.append(f"{user[1]}\{user[2]}")
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:71: SyntaxWarning: invalid escape sequence '\V'
+  'S-1-5-83-0': 'NT VIRTUAL MACHINE\Virtual Machines',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:80: SyntaxWarning: invalid escape sequence '\P'
+  'S-1-5-32-554': 'BUILTIN\Pre-Windows 2000 Compatible Access',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:81: SyntaxWarning: invalid escape sequence '\R'
+  'S-1-5-32-555': 'BUILTIN\Remote Desktop Users',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:82: SyntaxWarning: invalid escape sequence '\I'
+  'S-1-5-32-557': 'BUILTIN\Incoming Forest Trust Builders',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:84: SyntaxWarning: invalid escape sequence '\P'
+  'S-1-5-32-558': 'BUILTIN\Performance Monitor Users',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:85: SyntaxWarning: invalid escape sequence '\P'
+  'S-1-5-32-559': 'BUILTIN\Performance Log Users',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:86: SyntaxWarning: invalid escape sequence '\W'
+  'S-1-5-32-560': 'BUILTIN\Windows Authorization Access Group',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:87: SyntaxWarning: invalid escape sequence '\T'
+  'S-1-5-32-561': 'BUILTIN\Terminal Server License Servers',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:88: SyntaxWarning: invalid escape sequence '\D'
+  'S-1-5-32-562': 'BUILTIN\Distributed COM Users',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:89: SyntaxWarning: invalid escape sequence '\C'
+  'S-1-5-32-569': 'BUILTIN\Cryptographic Operators',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:90: SyntaxWarning: invalid escape sequence '\E'
+  'S-1-5-32-573': 'BUILTIN\Event Log Readers',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:91: SyntaxWarning: invalid escape sequence '\C'
+  'S-1-5-32-574': 'BUILTIN\Certificate Service DCOM Access',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:92: SyntaxWarning: invalid escape sequence '\R'
+  'S-1-5-32-575': 'BUILTIN\RDS Remote Access Servers',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:93: SyntaxWarning: invalid escape sequence '\R'
+  'S-1-5-32-576': 'BUILTIN\RDS Endpoint Servers',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:94: SyntaxWarning: invalid escape sequence '\R'
+  'S-1-5-32-577': 'BUILTIN\RDS Management Servers',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:95: SyntaxWarning: invalid escape sequence '\H'
+  'S-1-5-32-578': 'BUILTIN\Hyper-V Administrators',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:96: SyntaxWarning: invalid escape sequence '\A'
+  'S-1-5-32-579': 'BUILTIN\Access Control Assistance Operators',
+/usr/lib/python3/dist-packages/cme/modules/daclread.py:97: SyntaxWarning: invalid escape sequence '\R'
+  'S-1-5-32-580': 'BUILTIN\Remote Management Users',
+/usr/lib/python3/dist-packages/cme/modules/get_description.py:34: SyntaxWarning: invalid escape sequence '\d'
+  self.regex = re.compile("((?=[^ ]*[A-Z])(?=[^ ]*[a-z])(?=[^ ]*\d)|(?=[^ ]*[a-z])(?=[^ ]*\d)(?=[^ ]*[^\w \n])|(?=[^ ]*[A-Z])(?=[^ ]*\d)(?=[^ ]*[^\w \n])|(?=[^ ]*[A-Z])(?=[^ ]*[a-z])(?=[^ ]*[^\w \n]))[^ \n]{"+self.MINLENGTH+",}") # Credit : https://stackoverflow.com/questions/31191248/regex-password-must-have-at-least-3-of-the-4-of-the-following
+/usr/lib/python3/dist-packages/cme/modules/masky.py:17: SyntaxWarning: invalid escape sequence '\C'
+  CA              Certificate Authority Name (CA_SERVER\CA_NAME)
+/usr/lib/python3/dist-packages/cme/modules/masky.py:37: SyntaxWarning: invalid escape sequence '\C'
+  "Please provide a valid CA server and CA name (CA_SERVER\CA_NAME)"
+/usr/lib/python3/dist-packages/cme/modules/masky.py:83: SyntaxWarning: invalid escape sequence '\{'
+  context.log.highlight(f"{user.domain}\{user.name} {user.nt_hash}")
+/usr/lib/python3/dist-packages/cme/modules/met_inject.py:43: SyntaxWarning: invalid escape sequence '\p'
+  $PowershellExe=$env:windir+'\\syswow64\\WindowsPowerShell\\v1.0\powershell.exe'
+/usr/lib/python3/dist-packages/cme/modules/ms17-010.py:14: SyntaxWarning: invalid escape sequence '\ '
+  description = "MS17-010, /!\ not tested oustide home lab"
+/usr/lib/python3/dist-packages/cme/modules/ms17-010.py:184: SyntaxWarning: invalid escape sequence '\I'
+  ipc = "\\\\{}\IPC$\x00".format(ip)
+/usr/lib/python3/dist-packages/cme/modules/nanodump.py:45: SyntaxWarning: invalid escape sequence '\C'
+  if not os.path.exists(appdata_path+"\CME"):
+/usr/lib/python3/dist-packages/cme/modules/nanodump.py:46: SyntaxWarning: invalid escape sequence '\C'
+  os.mkdir(appdata_path+"\CME")
+/usr/lib/python3/dist-packages/cme/modules/nanodump.py:47: SyntaxWarning: invalid escape sequence '\C'
+  self.nano_path = appdata_path + "\CME\\"
+/usr/lib/python3/dist-packages/cme/modules/runasppl.py:18: SyntaxWarning: invalid escape sequence '\S'
+  command = 'reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\ /v RunAsPPL'
+/usr/lib/python3/dist-packages/cme/modules/wireless.py:18: SyntaxWarning: invalid escape sequence '\:'
+  command = 'powershell.exe -c "(netsh wlan show profiles) | Select-String """"\:(.+)$"""" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}'
+/usr/lib/python3/dist-packages/cme/protocols/smb/smbexec.py:49: SyntaxWarning: invalid escape sequence '\p'
+  stringbinding = 'ncacn_np:%s[\pipe\svcctl]' % self.__host
+/usr/lib/python3/dist-packages/cme/protocols/smb/smbexec.py:93: SyntaxWarning: invalid escape sequence '\{'
+  command = self.__shell + 'echo '+ data + ' ^> \\\\127.0.0.1\\{}\\{} 2^>^&1 > %TEMP%\{} & %COMSPEC% /Q /c %TEMP%\{} & %COMSPEC% /Q /c del %TEMP%\{}'.format(self.__share_name, self.__output, self.__batchFile, self.__batchFile, self.__batchFile)
+/usr/lib/python3/dist-packages/cme/protocols/winrm.py:324: SyntaxWarning: invalid escape sequence '\S'
+  self.conn.execute_cmd("reg save HKLM\SAM C:\\windows\\temp\\SAM && reg save HKLM\SYSTEM C:\\windows\\temp\\SYSTEM")
+/usr/lib/python3/dist-packages/cme/protocols/winrm.py:338: SyntaxWarning: invalid escape sequence '\S'
+  self.conn.execute_cmd("reg save HKLM\SECURITY C:\\windows\\temp\\SECURITY && reg save HKLM\SYSTEM C:\\windows\\temp\\SYSTEM")
+Processing triggers for doc-base (0.11.2) ...
+Processing 1 added doc-base file...
+Processing triggers for kali-menu (2025.3.2) ...
+                                                                             
+┌──(ismael㉿ismael)-[~]
+└─$ crackmapexec smb 10.0.0.160
+[*] First time use detected
+[*] Creating home directory structure
+[*] Creating default workspace
+[*] Initializing SMB protocol database
+[*] Initializing FTP protocol database
+[*] Initializing LDAP protocol database
+[*] Initializing MSSQL protocol database
+[*] Initializing RDP protocol database
+[*] Initializing WINRM protocol database
+[*] Initializing SSH protocol database
+[*] Copying default configuration file
+[*] Generating SSL certificate
+SMB         10.0.0.160      445    ISMAEL-PC        [*] Windows 7 Ultimate 7601 Service Pack 1 x64 (name:ISMAEL-PC) (domain:ismael-PC) (signing:False) (SMBv1:True)
+
+
+
+                                                                                                                   
+┌──(ismael㉿ismael)-[~]
+└─$ nmap --script "vuln and safe" -p 445 10.0.0.160                     
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-12 19:35 EST
+Nmap scan report for 10.0.0.160
+Host is up (0.014s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Host script results:
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+|       https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+|_      https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+
+Nmap done: 1 IP address (1 host up) scanned in 7.30 seconds
+
+
+                                                                                                                                                                                                                                            
+┌──(ismael㉿ismael)-[~]
+└─$ nmap -p 445 --script smb-vuln-ms17-010 10.0.0.160
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-12 19:45 EST
+Nmap scan report for 10.0.0.160
+Host is up (0.017s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+MAC Address: 08:00:27:20:22:B0 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Host script results:
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+|       https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+|_      https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+
+Nmap done: 1 IP address (1 host up) scanned in 6.93 seconds
+
+
+
+┌──(ismael㉿ismael)-[~]
+└─$ msfconsole -q
+msf > searcheternal blue
+[-] Unknown command: searcheternal. Run the help command for more details.
+msf > search eternalblue
+
+Matching Modules
+================
+
+   #   Name                                           Disclosure Date  Rank     Check  Description
+   -   ----                                           ---------------  ----     -----  -----------
+   0   exploit/windows/smb/ms17_010_eternalblue       2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
+   1     \_ target: Automatic Target                  .                .        .      .
+   2     \_ target: Windows 7                         .                .        .      .
+   3     \_ target: Windows Embedded Standard 7       .                .        .      .
+   4     \_ target: Windows Server 2008 R2            .                .        .      .
+   5     \_ target: Windows 8                         .                .        .      .
+   6     \_ target: Windows 8.1                       .                .        .      .
+   7     \_ target: Windows Server 2012               .                .        .      .
+   8     \_ target: Windows 10 Pro                    .                .        .      .
+   9     \_ target: Windows 10 Enterprise Evaluation  .                .        .      .
+   10  exploit/windows/smb/ms17_010_psexec            2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
+   11    \_ target: Automatic                         .                .        .      .
+   12    \_ target: PowerShell                        .                .        .      .
+   13    \_ target: Native upload                     .                .        .      .
+   14    \_ target: MOF upload                        .                .        .      .
+   15    \_ AKA: ETERNALSYNERGY                       .                .        .      .
+   16    \_ AKA: ETERNALROMANCE                       .                .        .      .
+   17    \_ AKA: ETERNALCHAMPION                      .                .        .      .
+   18    \_ AKA: ETERNALBLUE                          .                .        .      .
+   19  auxiliary/admin/smb/ms17_010_command           2017-03-14       normal   No     MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution
+   20    \_ AKA: ETERNALSYNERGY                       .                .        .      .
+   21    \_ AKA: ETERNALROMANCE                       .                .        .      .
+   22    \_ AKA: ETERNALCHAMPION                      .                .        .      .
+   23    \_ AKA: ETERNALBLUE                          .                .        .      .
+   24  auxiliary/scanner/smb/smb_ms17_010             .                normal   No     MS17-010 SMB RCE Detection
+   25    \_ AKA: DOUBLEPULSAR                         .                .        .      .
+   26    \_ AKA: ETERNALBLUE                          .                .        .      .
+   27  exploit/windows/smb/smb_doublepulsar_rce       2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
+   28    \_ target: Execute payload (x64)             .                .        .      .
+   29    \_ target: Neutralize implant                .                .        .      .
+
+
+Interact with a module by name or index. For example info 29, use 29 or use exploit/windows/smb/smb_doublepulsar_rce                                      
+After interacting with a module you can manually set a TARGET with set TARGET 'Neutralize implant'                                                        
+
+msf > 
